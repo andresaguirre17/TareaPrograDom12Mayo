@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambiar Color de Fondo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0V2rTgdx4A7wkq3Hy9jgyFcYNzzwojDc/hjvQkDXe1Qv9W8SpJK2XmiMqKX15H8" crossorigin="anonymous">
+  <style>
+    .rectangulo {
+        width: 200px;
+        height: 100px;
+        background-color: lightgray;
+        border-radius: 10px;
+        border-color: black;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+
+.btn-group {
+    margin-top: 20px; 
+}
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Cambiar Color de Fondo</h1>
+    <div id="miElemento" class="rectangulo">Este rectangulo cambiara de color</div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger" onclick="cambiarColor('miElemento', 'orange')">Naranja</button>
+      <button type="button" class="btn btn-primary" onclick="cambiarColor('miElemento', 'lightgreen')">Celeste</button>
+      <button type="button" class="btn btn-success" onclick="cambiarColor('miElemento', 'purple')">Morado</button>
+    </div>
+  </div>
+
+  <script>
+    function cambiarColor(idElemento, color) {
+        var elemento = document.getElementById(idElemento);
+        elemento.style.backgroundColor = color;
+    }
+  </script>
+</body>
+</html>

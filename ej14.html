@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duplicar Tamaño del Botón al Hacer Clic</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .centrado {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .boton {
+            width: 200px;
+            height: 50px;
+            transition: all 0.3s ease-in-out; /* Agregamos una transición para suavizar el cambio de tamaño */
+        }
+        .boton-ampliado {
+            width: 400px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container centrado">
+        <button class="btn btn-danger boton" id="miBoton">Haz click aqui y mira la magia</button>
+    </div>
+
+    <!-- Bootstrap JS y otros scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0-alpha1/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('miBoton').addEventListener('click', function() {
+            this.classList.toggle('boton-ampliado'); 
+        });
+    </script>
+</body>
+</html>

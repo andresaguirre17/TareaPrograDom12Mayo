@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relojes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .reloj-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 50px;
+        }
+
+        .reloj {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .hora, .minuto, .segundo {
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: black;
+            top: 50%;
+            transform-origin: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .minuto {
+            height: 3px;
+        }
+
+        .segundo {
+            background: red;
+        }
+
+        .centro {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: black;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #reloj-digital {
+            font-size: 3em;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="reloj-container">
+                    <div id="reloj-analogico" class="reloj">
+                        <div class="hora">h</div>
+                        <div class="minuto">m</div>
+                        <div class="segundo">s</div>
+                        <div class="centro"></div>
+                    </div>
+                    <div id="reloj-digital">00:00:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y otros scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        function actualizarReloj(){
+            const ahora= new Date();
+            const horas = ahora.getHours();
+            const minutos = ahora.getMinutes();
+            const segundos = ahora.getSeconds();
+
+            const horaManecilla=document.querySelector('.hora');
+            const minutoManecilla=document.querySelector('.minuto');
+            const segundoManecilla=document.querySelector('.segundo');
+
+            const horaGrados = ((horas*30)+90)+(0.5*minutos);
+            const minutoGrados = ((minutos*6)+90)+(0.1*segundos);
+            const segundoGrados = (segundos*6)+90;
+
+            horaManecilla.style.transform='rotate('+horaGrados+'deg)';
+            minutoManecilla.style.transform='rotate('+minutoGrados+'deg)';
+            segundoManecilla.style.transform='rotate('+segundoGrados+'deg)';
+
+
+
+            document.getElementById('reloj-digital').innerHTML=('0'+horas).slice(-2)+':'+('0'+minutos).slice(-2)+':'+('0'+segundos).slice(-2);
+
+        }
+        setInterval(actualizarReloj,1000);
+        actualizarReloj();
+    </script>
+</body>
+</html>
